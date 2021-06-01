@@ -6,7 +6,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://{your-demo-link.your-domain}">
+    <a href="https://windbnb-kelvin.netlify.app">
       Demo
     </a>
     <span> | </span>
@@ -35,18 +35,22 @@
 
 ## Overview
 
-![screenshot](https://user-images.githubusercontent.com/16707738/92399059-5716eb00-f132-11ea-8b14-bcacdc8ec97b.png)
+![screenshot](./src/images/windbnb.png)
 
-Introduce your projects by taking a screenshot or a gif. Try to tell visitors a story about your project by answering:
-
--   Where can I see your demo?
--   What was your experience?
--   What have you learned/improved?
--   Your wisdom? :)
+-   My experience
+    -   I enjoyed replicating the Figma designs of the project into actual code, and deploying the
+        interactive, responsive site.
+-   What I learnt/improved
+    -   I have improved on planning and organising my code. I even got to work with Typescript for the first
+        time and noticed a major improvement in error checking and intellisense.
+-   My thought
+    -   Nothing is impossible, get your attitude right, strive and change that to I'm possible ;)
 
 ### Built With
 
 -   [React](https://reactjs.org/)
+-   [Typescript](https://typescriptlang.com/)
+-   [Styled components](https://styled-components.com/)
 
 ## Features
 
@@ -81,6 +85,6 @@ $ npm start
 
 ## Contact
 
--   Website [windbnb](https://windbnb.netlify.app)
+-   Website [Windbnb](https://windbnb-kelvin.netlify.app)
 -   GitHub [@K-Kelvin](https://github.com/K-Kelvin)
 -   Twitter [@k_kijanda](https://twitter.com/k_kijanda)
