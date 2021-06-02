@@ -18,6 +18,9 @@ const Home = () => {
                         <StayCard key={id} {...stay} />
                     ))}
                 </Grid>
+                <div className="footer">
+                    created by <span>Kijanda</span> - devChallenges.io
+                </div>
             </Root>
         </>
     );
@@ -35,9 +38,19 @@ const Root = styled.div`
         .title {
             color: ${colors.black33};
             font-weight: bold;
+            font-size: 24px;
         }
         .num_stays {
-            color: ${colors.gray82};
+            color: ${colors.black4F};
+            font-size: 14px;
+        }
+    }
+    .footer {
+        margin-top: 40px;
+        text-align: center;
+        font-weight: 500;
+        span {
+            font-weight: 600;
         }
     }
 `;
@@ -48,13 +61,13 @@ const Grid = styled.div`
     gap: 32px;
     grid-template-columns: repeat(1, minmax(0, 1fr)); /* mobile */
 
+    /* tablets */
     @media screen and (min-width: 576px) {
-        /* tablets */
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    @media screen and (min-width: 768px) {
-        /* desktop */
+    /* desktop */
+    @media screen and (min-width: 768.5px) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 `;

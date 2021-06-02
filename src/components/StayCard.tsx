@@ -17,7 +17,7 @@ interface Props {
 const StayCard = (props: Props) => {
     return (
         <Card>
-            <Image src={props.photo} alt=" " />
+            <Image src={props.photo} alt={`${props.title}`} />
             <div className="flex">
                 <div className="host_beds_container">
                     {props.superHost && (
@@ -39,12 +39,14 @@ const StayCard = (props: Props) => {
 };
 
 const Image = styled.img`
-    width: 100%;
+    min-width: 100%;
     height: 270px;
+    min-height: 270px;
     border-radius: 24px;
     object-fit: cover;
     background: #c4c4c4;
     overflow: hidden;
+    padding: 12px;
 `;
 const Card = styled.div`
     width: 100%;
@@ -69,6 +71,7 @@ const Card = styled.div`
         font-size: 12px;
         text-transform: uppercase;
         font-weight: 700;
+        white-space: nowrap;
     }
     .type {
         color: ${colors.gray82};
