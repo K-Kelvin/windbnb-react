@@ -10,7 +10,7 @@
       Demo
     </a>
     <span> | </span>
-    <a href="https://{your-url-to-the-solution}">
+    <a href="#">
       Solution
     </a>
     <span> | </span>
@@ -49,8 +49,8 @@
 ### Built With
 
 -   [React](https://reactjs.org/)
--   [Typescript](https://typescriptlang.com/)
--   [Styled components](https://styled-components.com/)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Styled components](https://www.styled-components.com/)
 
 ## Features
 
@@ -81,7 +81,7 @@ $ npm start
 
 -   [Steps to replicate a design with only HTML and CSS](https://devchallenges-blogs.web.app/how-to-replicate-design/)
 -   [Node.js](https://nodejs.org/)
--   [Marked - a markdown parser](https://github.com/chjj/marked)
+<!-- -   [Marked - a markdown parser](https://github.com/chjj/marked) -->
 
 ## Contact
 
