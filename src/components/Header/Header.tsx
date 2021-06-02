@@ -1,13 +1,19 @@
 import { useState } from "react";
 import styled from "styled-components";
-import colors from "../constants/colors";
-import logo from "../images/logo.png";
-import { CloseIcon, SearchIcon } from "./Icons";
+import colors from "constants/colors";
+import logo from "images/logo.png";
+import { CloseIcon, SearchIcon } from "components/Icons";
+import LocationContainer from "./LocationContainer";
+import GuestsContainer from "./GuestsContainer";
 
 const Header = () => {
     const [showOverlay, setShowOverlay] = useState(false);
+    const [showLocations, setShowLocations] = useState(false);
+    const [showGuests, setShowGuests] = useState(false);
+
     if (showOverlay) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
+
     return (
         <Root>
             <img className="logo" src={logo} alt="logo" />
@@ -16,7 +22,11 @@ const Header = () => {
                     <span className="edit">Edit your search</span>
                     <CloseIcon
                         color={colors.black33}
-                        onClick={() => setShowOverlay(false)}
+                        onClick={() => {
+                            setShowOverlay(false);
+                            setShowLocations(false);
+                            setShowGuests(false);
+                        }}
                     />
                 </div>
                 <div
@@ -25,22 +35,42 @@ const Header = () => {
                     }`}
                     onClick={() => setShowOverlay(true)}
                 >
-                    <div className="input_container">
-                        <label htmlFor="location">Location</label>
-                        <input
-                            id="location"
-                            type="text"
-                            placeholder="Location"
-                            defaultValue="Helsinki, Finland"
+                    <div
+                        className="input_container"
+                        onClick={() => {
+                            setShowLocations(true);
+                            setShowGuests(false);
+                        }}
+                    >
+                        <div className="relative">
+                            <label htmlFor="location">Location</label>
+                            <input
+                                id="location"
+                                type="text"
+                                placeholder="Location"
+                                defaultValue="Helsinki, Finland"
+                            />
+                        </div>
+                        <LocationContainer
+                            visible={showOverlay && showLocations}
                         />
                     </div>
-                    <div className="input_container">
-                        <label htmlFor="guests">Guests</label>
-                        <input
-                            id="guests"
-                            type="text"
-                            placeholder="Add guests"
-                        />
+                    <div
+                        className="input_container"
+                        onClick={() => {
+                            setShowGuests(true);
+                            setShowLocations(false);
+                        }}
+                    >
+                        <div className="relative">
+                            <label htmlFor="guests">Guests</label>
+                            <input
+                                id="guests"
+                                type="text"
+                                placeholder="Add guests"
+                            />
+                        </div>
+                        <GuestsContainer visible={showOverlay && showGuests} />
                     </div>
                     <div className="icon_container">
                         <button className="search">
@@ -75,7 +105,9 @@ const Root = styled.header`
         border: none;
         background: none;
     }
-
+    .relative {
+        position: relative;
+    }
     @media screen and (min-width: 767px) {
         flex-direction: row;
         justify-content: space-between;
@@ -95,10 +127,10 @@ const Root = styled.header`
         background: ${colors.white};
         box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
         border-radius: 16px;
-        overflow: hidden;
         font-family: "Mulish", sans-serif;
         font-weight: 400;
         height: 54px;
+        position: relative;
         /* max-width: 300px; */
         & > div {
             height: 100%;
@@ -120,7 +152,9 @@ const Root = styled.header`
         .input_container {
             font-size: 14px;
             color: ${colors.black33};
-            position: relative;
+            @media screen and (min-width: 767px) {
+                position: relative;
+            }
             label {
                 display: none;
                 position: absolute;
@@ -156,7 +190,7 @@ const Root = styled.header`
     }
     .overlay {
         width: 100%;
-        height: 100%;
+        height: 100vh;
         position: absolute;
         z-index: 30;
         top: 0;
@@ -174,6 +208,9 @@ const Root = styled.header`
                 font-weight: bold;
                 font-size: 12px;
                 color: ${colors.black33};
+                @media screen and (min-width: 767px) {
+                    visibility: hidden;
+                }
             }
         }
         .background {
@@ -184,6 +221,9 @@ const Root = styled.header`
             left: 0;
             width: 100%;
             height: 80%;
+            @media screen and (min-width: 767px) {
+                height: 60%;
+            }
             .search {
                 position: absolute;
                 bottom: 16px;
@@ -225,14 +265,17 @@ const Root = styled.header`
             @media screen and (min-width: 767px) {
                 height: auto;
                 flex: 1;
+                .relative {
+                    height: 100%;
+                }
             }
-        }
-        div + div {
-            border-left: none;
-            border-top: 1px solid ${colors.whiteF2};
-            @media screen and (min-width: 767px) {
-                border-top: none;
-                border-left: 1px solid ${colors.whiteF2};
+            & + div {
+                border-left: none;
+                border-top: 1px solid ${colors.whiteF2};
+                @media screen and (min-width: 767px) {
+                    border-top: none;
+                    border-left: 1px solid ${colors.whiteF2};
+                }
             }
         }
         .input_container {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import Header from "../components/Header";
-import StayCard from "../components/StayCard";
-import colors from "../constants/colors";
-import stays from "../constants/stays.json";
+import { Header } from "components/Header";
+import StayCard from "components/StayCard";
+import colors from "constants/colors";
+import stays from "constants/stays.json";
 
 const Home = () => {
     return (

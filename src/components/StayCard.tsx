@@ -40,13 +40,13 @@ const StayCard = (props: Props) => {
 
 const Image = styled.img`
     min-width: 100%;
+    width: 100%;
     height: 270px;
     min-height: 270px;
     border-radius: 24px;
     object-fit: cover;
     background: #c4c4c4;
     overflow: hidden;
-    padding: 12px;
 `;
 const Card = styled.div`
     width: 100%;
