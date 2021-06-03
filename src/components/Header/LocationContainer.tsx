@@ -11,7 +11,7 @@ const locations = [
 
 interface Props {
     visible: boolean;
-    onLocationClick?: (id: number) => void;
+    onLocationClick?: (location: string) => void;
 }
 
 const LocationContainer = (props: Props) => {
@@ -22,7 +22,7 @@ const LocationContainer = (props: Props) => {
                 <div
                     key={id}
                     className="Location"
-                    onClick={() => props.onLocationClick?.(id)}
+                    onClick={() => props.onLocationClick?.(location)}
                 >
                     <LocationIcon />
                     <span>{location}</span>
@@ -37,9 +37,8 @@ const Div = styled.div`
     z-index: 30;
     top: 100%;
     left: 0;
-    padding: 28px;
     width: 100%;
-    max-height: 300px;
+    max-height: 292px;
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -47,10 +46,15 @@ const Div = styled.div`
         display: flex;
         align-items: center;
         gap: 10px;
+        padding: 18px 28px;
         color: ${colors.black33};
+        cursor: pointer;
 
-        & + .Location {
-            margin-top: 36px;
+        &:first-child {
+            margin-top: 18px;
+        }
+        &:hover {
+            background: #fbfbfd;
         }
     }
 `;

@@ -67,7 +67,7 @@ const Grid = styled.div`
     }
 
     /* desktop */
-    @media screen and (min-width: 768.5px) {
+    @media screen and (min-width: 1048px) {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 `;

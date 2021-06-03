@@ -1,11 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import colors from "constants/colors";
 import { MinusIcon, PlusIcon } from "components/Icons";
 
-const GuestsContainer = ({ visible, ...rest }: { visible: boolean }) => {
+interface Props {
+    visible: boolean;
+    setTotal: (total: number) => void;
+}
+
+const GuestsContainer = ({ visible, setTotal, ...rest }: Props) => {
     const [numOfAdults, setNumOfAdults] = useState(0);
     const [numOfChildren, setNumOfChildren] = useState(0);
+
+    useEffect(() => {
+        setTotal(numOfAdults + numOfChildren);
+    }, [numOfAdults, numOfChildren, setTotal]);
+
+    useEffect(() => {
+        return () => {
+            setNumOfAdults(0);
+            setNumOfChildren(0);
+        };
+    }, []);
 
     if (!visible) return null;
     const increaseAdults = () => {

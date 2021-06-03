@@ -10,6 +10,8 @@ const Header = () => {
     const [showOverlay, setShowOverlay] = useState(false);
     const [showLocations, setShowLocations] = useState(false);
     const [showGuests, setShowGuests] = useState(false);
+    const [currentLocation, setCurrentLocation] = useState("Helsinki, Finland");
+    const [totalGuests, setTotalGuests] = useState(0);
 
     if (showOverlay) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "";
@@ -48,11 +50,17 @@ const Header = () => {
                                 id="location"
                                 type="text"
                                 placeholder="Location"
-                                defaultValue="Helsinki, Finland"
+                                value={currentLocation}
+                                onChange={e =>
+                                    setCurrentLocation(e.target.value)
+                                }
                             />
                         </div>
                         <LocationContainer
                             visible={showOverlay && showLocations}
+                            onLocationClick={location =>
+                                setCurrentLocation(location)
+                            }
                         />
                     </div>
                     <div
@@ -68,9 +76,22 @@ const Header = () => {
                                 id="guests"
                                 type="text"
                                 placeholder="Add guests"
+                                onChange={e =>
+                                    setTotalGuests(parseInt(e.target.value))
+                                }
+                                value={
+                                    totalGuests > 0
+                                        ? `${totalGuests} guest${
+                                              totalGuests > 1 ? "s" : ""
+                                          }`
+                                        : ""
+                                }
                             />
                         </div>
-                        <GuestsContainer visible={showOverlay && showGuests} />
+                        <GuestsContainer
+                            visible={showOverlay && showGuests}
+                            setTotal={total => setTotalGuests(total)}
+                        />
                     </div>
                     <div className="icon_container">
                         <button className="search">
